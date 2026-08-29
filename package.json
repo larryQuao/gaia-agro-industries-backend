@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "build": "npx prisma generate && npx prisma migrate deploy",
+    "start": "tsx src/index.ts",
     "seed": "tsx prisma/seed.ts",
     "db:migrate": "npx prisma migrate dev",
     "db:generate": "npx prisma generate"
@@ -25,7 +25,8 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.2.0",
     "pg": "^8.23.0",
-    "prisma": "^7.9.1"
+    "prisma": "^7.9.1",
+    "tsx": "^4.23.12"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -36,7 +37,6 @@
     "@types/node": "^26.2.0",
     "@types/pg": "^8.21.0",
     "ts-node": "^10.9.2",
-    "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }
 }

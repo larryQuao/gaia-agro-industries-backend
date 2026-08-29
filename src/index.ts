@@ -15,7 +15,10 @@ import path from "path";
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors({ origin: ["http://localhost:3000", "http://localhost:3001"] }));
+const allowedOrigins = process.env.CORS_ORIGINS
+  ? process.env.CORS_ORIGINS.split(",")
+  : ["http://localhost:3000", "http://localhost:3001"];
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 app.use("/uploads", express.static(path.join(import.meta.dirname, "../uploads")));
 
